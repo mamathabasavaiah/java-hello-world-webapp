@@ -1,11 +1,10 @@
 pipeline {
-    agent any
-    
-          stages("codecheckout")
+    agent any    
+          stage("codecheckout")
             {
              git branch: 'master',  url: 'https://github.com/mamathabasavaiah/java-hello-world-webapp.git'
             }
-         stages("Build")
+         stage("Build")
              {
              sh "${mavenHome}/bin/mvn clean package"
              }
