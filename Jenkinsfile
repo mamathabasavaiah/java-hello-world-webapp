@@ -1,10 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
+          stage("code check out")
+            {
+             git branch: 'master',  url: 'https://github.com/mamathabasavaiah/java-hello-world-webapp.git'
             }
+         stage("Build")
+             {
+             sh "${mavenHome}/bin/mvn clean package"
+             }
         }
     }
-}
+
